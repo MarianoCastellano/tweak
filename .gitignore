@@ -1,4 +1,5 @@
 /bin/
+target/
 .gitignore
 .classpath
 .settings/*
