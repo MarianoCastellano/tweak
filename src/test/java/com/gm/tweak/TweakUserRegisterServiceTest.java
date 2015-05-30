@@ -18,12 +18,15 @@ public class TweakUserRegisterServiceTest {
 
 		String email = "email";
 		String username = "username";
+		String password = "12345";
 
-		TweakUser tweakUser = tweakUserRegisterService.register(email, username);
+		TweakUser tweakUser = tweakUserRegisterService.register(email, username, password);
 
 		Assert.assertNotNull(tweakUser);
 		Assert.assertEquals(email, tweakUser.getEmail());
 		Assert.assertEquals(username, tweakUser.getUsername());
+		Assert.assertEquals(password, tweakUser.getPassword());
+
 	}
 
 }

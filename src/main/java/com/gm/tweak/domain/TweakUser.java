@@ -5,10 +5,12 @@ public class TweakUser {
 	private Long id;
 	private String email;
 	private String username;
+	private String password;
 
-	public TweakUser(String email, String username) {
+	public TweakUser(String email, String username, String password) {
 		this.email = email;
 		this.username = username;
+		this.password = password;
 	}
 
 	public void assignId(long id) {
@@ -25,5 +27,9 @@ public class TweakUser {
 
 	public String getUsername() {
 		return username;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 }

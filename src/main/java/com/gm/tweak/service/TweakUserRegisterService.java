@@ -11,8 +11,8 @@ public class TweakUserRegisterService {
 		this.tweakUserRepository = tweakUserRepository;
 	}
 
-	public TweakUser register(String email, String username) {
-		return tweakUserRepository.save(new TweakUser(email, username));
+	public TweakUser register(String email, String username, String password) {
+		return tweakUserRepository.save(new TweakUser(email, username, password));
 	}
 
 }

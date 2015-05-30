@@ -16,8 +16,9 @@ public class TweakUserRepositoryTest {
 
 		String userEmail = "userEmail";
 		String userUsername = "userUsername";
+		String password = "password";
 
-		TweakUser tweakUserToSave = new TweakUser(userEmail, userUsername);
+		TweakUser tweakUserToSave = new TweakUser(userEmail, userUsername, password);
 
 		TweakUser savedTweakUser = tweakUserRepository.save(tweakUserToSave);
 
@@ -25,9 +26,12 @@ public class TweakUserRepositoryTest {
 		Assert.assertNotNull(savedTweakUser.getId());
 		Assert.assertNotNull(savedTweakUser.getEmail());
 		Assert.assertNotNull(savedTweakUser.getUsername());
+		Assert.assertNotNull(savedTweakUser.getPassword());
 
 		Assert.assertEquals(tweakUserToSave.getEmail(), savedTweakUser.getEmail());
 		Assert.assertEquals(tweakUserToSave.getUsername(), savedTweakUser.getUsername());
+		Assert.assertEquals(tweakUserToSave.getPassword(), savedTweakUser.getPassword());
+
 	}
 
 	@Test
@@ -35,8 +39,9 @@ public class TweakUserRepositoryTest {
 
 		String userEmail = "userEmail";
 		String userUsername = "userUsername";
+		String password = "password";
 
-		TweakUser savedTweakUser = tweakUserRepository.save(new TweakUser(userEmail, userUsername));
+		TweakUser savedTweakUser = tweakUserRepository.save(new TweakUser(userEmail, userUsername, password));
 
 		TweakUser foundTweakUser = tweakUserRepository.findById(savedTweakUser.getId());
 
@@ -44,8 +49,10 @@ public class TweakUserRepositoryTest {
 		Assert.assertNotNull(foundTweakUser.getId());
 		Assert.assertNotNull(foundTweakUser.getEmail());
 		Assert.assertNotNull(foundTweakUser.getUsername());
+		Assert.assertNotNull(foundTweakUser.getPassword());
 
 		Assert.assertEquals(savedTweakUser.getEmail(), foundTweakUser.getEmail());
 		Assert.assertEquals(savedTweakUser.getUsername(), foundTweakUser.getUsername());
+		Assert.assertEquals(savedTweakUser.getPassword(), foundTweakUser.getPassword());
 	}
 }

@@ -12,14 +12,18 @@ public class TweakUserTest {
 
 		String email = "german@german.com";
 		String username = "ger00";
+		String password = "12345";
 
-		TweakUser tweakUser = new TweakUser(email, username);
+		TweakUser tweakUser = new TweakUser(email, username, password);
 
 		Assert.assertNotNull(tweakUser.getEmail());
 		Assert.assertNotNull(tweakUser.getUsername());
+		Assert.assertNotNull(tweakUser.getPassword());
 
 		Assert.assertEquals(email, tweakUser.getEmail());
 		Assert.assertEquals(username, tweakUser.getUsername());
+		Assert.assertEquals(password, tweakUser.getPassword());
+
 	}
 
 }
