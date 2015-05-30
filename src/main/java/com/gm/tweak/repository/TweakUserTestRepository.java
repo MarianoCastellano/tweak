@@ -1,10 +1,10 @@
-package com.gm.tweak;
+package com.gm.tweak.repository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import com.gm.tweak.domain.TweakUser;
-import com.gm.tweak.repository.TweakUserRepository;
 
 public class TweakUserTestRepository implements TweakUserRepository {
 
@@ -16,17 +16,10 @@ public class TweakUserTestRepository implements TweakUserRepository {
 
 	@Override
 	public TweakUser save(TweakUser tweakUser) {
-
-		TweakUser savedTweakUser = null;
-
-		for (long i = 0; i < 10; i++) {
-			if (!tweakUsers.containsKey(i)) {
-				tweakUsers.put(i, tweakUser);
-				tweakUser.assignId(i);
-				savedTweakUser = tweakUser;
-			}
-		}
-		return savedTweakUser;
+		long id = UUID.randomUUID().getMostSignificantBits();
+		tweakUser.assignId(id);
+		tweakUsers.put(id, tweakUser);
+		return tweakUser;
 	}
 
 	@Override

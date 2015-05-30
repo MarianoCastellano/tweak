@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import com.gm.tweak.domain.TweakUser;
 import com.gm.tweak.repository.TweakUserRepository;
+import com.gm.tweak.repository.TweakUserTestRepository;
 
 public class TweakUserRepositoryTest {
 
