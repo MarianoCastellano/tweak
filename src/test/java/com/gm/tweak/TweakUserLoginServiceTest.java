@@ -5,6 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.gm.tweak.domain.TweakUser;
+import com.gm.tweak.exception.ErrorCode;
+import com.gm.tweak.exception.InvalidPasswordException;
+import com.gm.tweak.exception.UserNotFoundException;
 import com.gm.tweak.helper.TestUtils;
 import com.gm.tweak.repository.TweakUserTestRepository;
 import com.gm.tweak.service.TweakUserLoginService;
@@ -27,12 +30,13 @@ public class TweakUserLoginServiceTest {
 		TweakUser tweakUser = TestUtils.createDefaultTweakUser();
 		tweakUserRegisterService.register(tweakUser.getEmail(), tweakUser.getUsername(), tweakUser.getPassword());
 
+		TweakUser foundTweakUser = null;
 		try {
-			TweakUser foundTweakUser = tweakUserLoginService.login(tweakUser.getEmail(), tweakUser.getPassword());
-			TestUtils.assertTweakuserIsValid(foundTweakUser);
-		} catch (Exception e) {
+			foundTweakUser = tweakUserLoginService.login(tweakUser.getEmail(), tweakUser.getPassword());
+		} catch (UserNotFoundException | InvalidPasswordException e) {
 			Assert.fail();
 		}
+		TestUtils.assertTweakuserIsValid(foundTweakUser);
 
 	}
 
@@ -40,10 +44,13 @@ public class TweakUserLoginServiceTest {
 	public void failLogin() {
 
 		try {
-			tweakUserLoginService.login("ASDFG", "ASDFG");
-			Assert.fail();
-		} catch (Exception e) {
-			Assert.assertTrue(e.getMessage().contains("NOT FOUND"));
+			try {
+				tweakUserLoginService.login("ASDFG", "ASDFG");
+			} catch (InvalidPasswordException e) {
+				Assert.fail();
+			}
+		} catch (UserNotFoundException e) {
+			Assert.assertTrue(e.getErrorCode() == ErrorCode.USER_NOT_FOUND);
 		}
 
 	}

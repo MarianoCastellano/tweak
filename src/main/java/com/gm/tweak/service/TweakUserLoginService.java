@@ -1,6 +1,8 @@
 package com.gm.tweak.service;
 
 import com.gm.tweak.domain.TweakUser;
+import com.gm.tweak.exception.InvalidPasswordException;
+import com.gm.tweak.exception.UserNotFoundException;
 import com.gm.tweak.repository.TweakUserRepository;
 
 public class TweakUserLoginService {
@@ -11,13 +13,13 @@ public class TweakUserLoginService {
 		this.tweakUserRepository = tweakUserRepository;
 	}
 
-	public TweakUser login(String email, String password) throws Exception {
+	public TweakUser login(String email, String password) throws UserNotFoundException, InvalidPasswordException {
 
 		TweakUser tweakUser = tweakUserRepository.findByEmail(email);
 
 		if (password.equals(tweakUser.getPassword())) {
 			return tweakUser;
 		}
-		throw new Exception("INVALID PASSWORD");
+		throw new InvalidPasswordException("INVALID PASSWORD");
 	}
 }

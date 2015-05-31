@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.gm.tweak.domain.TweakUser;
+import com.gm.tweak.exception.UserNotFoundException;
 
 public class TweakUserTestRepository implements TweakUserRepository {
 
@@ -32,12 +33,12 @@ public class TweakUserTestRepository implements TweakUserRepository {
 	}
 
 	@Override
-	public TweakUser findByEmail(String email) throws Exception {
+	public TweakUser findByEmail(String email) throws UserNotFoundException {
 		for (TweakUser tweakUser : tweakUsers.values()) {
 			if (email.equals(tweakUser.getEmail())) {
 				return tweakUser;
 			}
 		}
-		throw new Exception("USER NOT FOUND");
+		throw new UserNotFoundException("USER NOT FOUND");
 	}
 }
