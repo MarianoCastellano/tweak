@@ -23,8 +23,21 @@ public class TweakUserTestRepository implements TweakUserRepository {
 	}
 
 	@Override
-	public TweakUser findById(Long id) {
-		return tweakUsers.get(id);
+	public TweakUser findById(Long id) throws Exception {
+		TweakUser tweakUser = tweakUsers.get(id);
+		if (tweakUser == null) {
+			throw new Exception("USER NOT FOUND");
+		}
+		return tweakUser;
 	}
 
+	@Override
+	public TweakUser findByEmail(String email) throws Exception {
+		for (TweakUser tweakUser : tweakUsers.values()) {
+			if (email.equals(tweakUser.getEmail())) {
+				return tweakUser;
+			}
+		}
+		throw new Exception("USER NOT FOUND");
+	}
 }

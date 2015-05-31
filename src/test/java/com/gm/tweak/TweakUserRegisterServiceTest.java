@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.gm.tweak.domain.TweakUser;
+import com.gm.tweak.helper.TestUtils;
 import com.gm.tweak.repository.TweakUserTestRepository;
 import com.gm.tweak.service.TweakUserRegisterService;
 
@@ -22,7 +23,8 @@ public class TweakUserRegisterServiceTest {
 
 		TweakUser tweakUser = tweakUserRegisterService.register(email, username, password);
 
-		Assert.assertNotNull(tweakUser);
+		TestUtils.assertTweakuserIsValid(tweakUser);
+
 		Assert.assertEquals(email, tweakUser.getEmail());
 		Assert.assertEquals(username, tweakUser.getUsername());
 		Assert.assertEquals(password, tweakUser.getPassword());

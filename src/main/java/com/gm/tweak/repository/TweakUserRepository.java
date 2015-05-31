@@ -6,6 +6,8 @@ public interface TweakUserRepository {
 
 	public TweakUser save(TweakUser tweakUser);
 
-	public TweakUser findById(Long id);
+	public TweakUser findById(Long id) throws Exception;
+
+	public TweakUser findByEmail(String email) throws Exception;
 
 }
