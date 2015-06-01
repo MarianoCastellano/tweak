@@ -11,15 +11,15 @@ import com.gm.tweak.domain.game.Game;
 import com.gm.tweak.domain.game.Player;
 import com.gm.tweak.domain.game.PlayerId;
 import com.gm.tweak.repository.GameMemoryRepository;
-import com.gm.tweak.service.GameSerivce;
+import com.gm.tweak.service.GameService;
 
 public class GameTest {
 
-	private GameSerivce gameService;
+	private GameService gameService;
 
 	@Before
 	public void init() {
-		gameService = new GameSerivce(new GameMemoryRepository());
+		gameService = new GameService(new GameMemoryRepository());
 	}
 
 	@Test

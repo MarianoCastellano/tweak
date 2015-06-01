@@ -1,13 +1,13 @@
 package com.gm.tweak.domain;
 
-public class TweakUser {
+public class User {
 
 	private Long id;
 	private String email;
 	private String username;
 	private String password;
 
-	public TweakUser(String email, String username, String password) {
+	public User(String email, String username, String password) {
 		this.email = email;
 		this.username = username;
 		this.password = password;

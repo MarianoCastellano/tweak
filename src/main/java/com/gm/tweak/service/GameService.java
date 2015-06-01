@@ -9,11 +9,11 @@ import com.gm.tweak.domain.game.PlayerId;
 import com.gm.tweak.domain.game.factory.GameBuilder;
 import com.gm.tweak.repository.GameRepository;
 
-public class GameSerivce {
+public class GameService {
 
 	private GameRepository gameRepository;
 
-	public GameSerivce(GameRepository gameRepository) {
+	public GameService(GameRepository gameRepository) {
 		this.gameRepository = gameRepository;
 	}
 

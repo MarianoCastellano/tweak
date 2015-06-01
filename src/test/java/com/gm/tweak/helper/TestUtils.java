@@ -2,20 +2,20 @@ package com.gm.tweak.helper;
 
 import org.junit.Assert;
 
-import com.gm.tweak.domain.TweakUser;
+import com.gm.tweak.domain.User;
 
 public class TestUtils {
 
-	public static TweakUser createDefaultTweakUser() {
-		return new TweakUser("DEFAULT_EMAIL", "DEFAULT_USERNAME", "DEFAULT_PASSWORD");
+	public static User createDefaultUser() {
+		return new User("DEFAULT_EMAIL", "DEFAULT_USERNAME", "DEFAULT_PASSWORD");
 	}
 
-	public static void assertTweakuserIsValid(TweakUser tweakUser) {
-		Assert.assertNotNull(tweakUser);
-		Assert.assertNotNull(tweakUser.getId());
-		Assert.assertNotNull(tweakUser.getEmail());
-		Assert.assertNotNull(tweakUser.getUsername());
-		Assert.assertNotNull(tweakUser.getPassword());
+	public static void assertUserIsValid(User user) {
+		Assert.assertNotNull(user);
+		Assert.assertNotNull(user.getId());
+		Assert.assertNotNull(user.getEmail());
+		Assert.assertNotNull(user.getUsername());
+		Assert.assertNotNull(user.getPassword());
 	}
 
 }
