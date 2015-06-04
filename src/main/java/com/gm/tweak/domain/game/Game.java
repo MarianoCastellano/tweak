@@ -1,10 +1,14 @@
 package com.gm.tweak.domain.game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
 
 	private GameId gameId;
 	private PlayerId playerIdCreator;
 	private Drawing drawing;
+	private List<DomainEventHandler> eventHandlers = new ArrayList<DomainEventHandler>();
 
 	public Game(GameId gameId, PlayerId playerId, Drawing drawing) {
 		this.gameId = gameId;

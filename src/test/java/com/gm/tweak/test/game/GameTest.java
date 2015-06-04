@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.gm.tweak.domain.game.Drawing;
 import com.gm.tweak.domain.game.Game;
-import com.gm.tweak.domain.game.Player;
+import com.gm.tweak.domain.game.PlayerCreator;
 import com.gm.tweak.domain.game.PlayerId;
 import com.gm.tweak.repository.GameMemoryRepository;
 import com.gm.tweak.service.GameService;
@@ -35,12 +35,12 @@ public class GameTest {
 
 		List<Game> games = gameService.findAllGames();
 
-		Assert.assertEquals(1, games.size());;
+		Assert.assertEquals(1, games.size());
 	}
 
 	private Game createGame() {
 		Drawing stone = new Drawing("Stone", new Byte[100]);
-		Player playerCreator = new Player(new PlayerId("1"));
+		PlayerCreator playerCreator = new PlayerCreator(new PlayerId("1"));
 
 		return gameService.createGame(stone, playerCreator.getPlayerId());
 	}
