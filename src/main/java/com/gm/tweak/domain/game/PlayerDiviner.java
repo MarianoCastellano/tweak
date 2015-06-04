@@ -20,14 +20,13 @@ public class PlayerDiviner {
 		this.triedWords.add(triedWord);
 
 		boolean playerGuessTheWord = triedWord.equals(game.getDrawing().getName());
-		// game.addEvent(new PlayerTriedToGuessEvent(this, game));
-
 		if (playerGuessTheWord) {
+			addCoins(game.getDrawing().getValue());
 			game.addEvent(new PlayerGuessTheDrawingEvent(this, game));
 		}
 	}
 
-	public void addCoins(Long coinsEarned) {
+	private void addCoins(Long coinsEarned) {
 		this.coins += coinsEarned;
 	}
 
