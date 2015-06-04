@@ -16,6 +16,10 @@ public class Drawing {
 		this.value++;
 	}
 
+	public Long getValue() {
+		return value;
+	}
+
 	public Byte[] getImage() {
 		return image;
 	}

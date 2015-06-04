@@ -16,12 +16,27 @@ public class PlayerDiviner {
 	}
 
 	public void tryWord(String triedWord, Game game) {
+
 		this.triedWords.add(triedWord);
 
+		boolean playerGuessTheWord = triedWord.equals(game.getDrawing().getName());
+		// game.addEvent(new PlayerTriedToGuessEvent(this, game));
+
+		if (playerGuessTheWord) {
+			game.addEvent(new PlayerGuessTheDrawingEvent(this, game));
+		}
 	}
 
 	public void addCoins(Long coinsEarned) {
 		this.coins += coinsEarned;
+	}
+
+	public Long getCoins() {
+		return coins;
+	}
+
+	public List<String> getTriedWords() {
+		return triedWords;
 	}
 
 	public PlayerId getPlayerId() {

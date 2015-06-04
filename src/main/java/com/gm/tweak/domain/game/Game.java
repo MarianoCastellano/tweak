@@ -8,12 +8,20 @@ public class Game {
 	private GameId gameId;
 	private PlayerId playerIdCreator;
 	private Drawing drawing;
-	private List<DomainEventHandler> eventHandlers = new ArrayList<DomainEventHandler>();
+	private List<DomainEvent> events = new ArrayList<DomainEvent>();
 
 	public Game(GameId gameId, PlayerId playerId, Drawing drawing) {
 		this.gameId = gameId;
 		this.playerIdCreator = playerId;
 		this.drawing = drawing;
+	}
+
+	public void addEvent(DomainEvent domainEvent) {
+		this.events.add(domainEvent);
+	}
+
+	public void handleEvents() {
+		new PlayerGuessTheWordEventHandler().handle((PlayerGuessTheDrawingEvent) events.iterator().next());
 	}
 
 	public GameId getGameId() {

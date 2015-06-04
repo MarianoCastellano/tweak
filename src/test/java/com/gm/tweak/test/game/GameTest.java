@@ -9,6 +9,7 @@ import org.junit.Test;
 import com.gm.tweak.domain.game.Drawing;
 import com.gm.tweak.domain.game.Game;
 import com.gm.tweak.domain.game.PlayerCreator;
+import com.gm.tweak.domain.game.PlayerDiviner;
 import com.gm.tweak.domain.game.PlayerId;
 import com.gm.tweak.repository.GameMemoryRepository;
 import com.gm.tweak.service.GameService;
@@ -27,6 +28,25 @@ public class GameTest {
 		Game game = createGame();
 
 		Assert.assertNotNull(game.getGameId());
+	}
+
+	@Test
+	public void handleEventsTest() {
+
+		Game game = createGame();
+		PlayerDiviner diviner = new PlayerDiviner(new PlayerId("2"));
+
+		diviner.tryWord("Stone", game);
+		diviner.tryWord("ARBOL", game);
+
+		List<String> triedWords = diviner.getTriedWords();
+
+		game.handleEvents();
+
+		Assert.assertEquals(2L, triedWords.size());
+		Assert.assertEquals(2L, triedWords.size());
+		Assert.assertEquals(new Long(11), diviner.getCoins());
+
 	}
 
 	@Test
