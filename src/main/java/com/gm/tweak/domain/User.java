@@ -7,6 +7,9 @@ public class User {
 	private String username;
 	private String password;
 
+	// TODO CR-NANO: Tendria que tener el id por parametro, de lo contrario se
+	// puede cambiar el identificador al objeto y se violaria la integridad del
+	// objeto.
 	public User(String email, String username, String password) {
 		this.email = email;
 		this.username = username;
@@ -32,4 +35,7 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+
+	// TODO CR-NANO: Falta definir equals, es decir, el mecanismo por el cual un
+	// usuario es distinto a otro.
 }
