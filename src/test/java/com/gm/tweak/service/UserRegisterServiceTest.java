@@ -1,4 +1,4 @@
-package com.gm.tweak;
+package com.gm.tweak.service;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,7 +6,6 @@ import org.junit.Test;
 import com.gm.tweak.domain.User;
 import com.gm.tweak.helper.TestUtils;
 import com.gm.tweak.repository.UserTestRepository;
-import com.gm.tweak.service.UserRegisterService;
 
 public class UserRegisterServiceTest {
 

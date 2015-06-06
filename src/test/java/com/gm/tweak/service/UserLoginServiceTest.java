@@ -1,4 +1,4 @@
-package com.gm.tweak;
+package com.gm.tweak.service;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,8 +10,6 @@ import com.gm.tweak.exception.InvalidPasswordException;
 import com.gm.tweak.exception.UserNotFoundException;
 import com.gm.tweak.helper.TestUtils;
 import com.gm.tweak.repository.UserTestRepository;
-import com.gm.tweak.service.UserLoginService;
-import com.gm.tweak.service.UserRegisterService;
 
 public class UserLoginServiceTest {
 

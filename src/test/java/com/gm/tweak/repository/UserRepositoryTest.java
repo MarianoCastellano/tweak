@@ -1,12 +1,10 @@
-package com.gm.tweak;
+package com.gm.tweak.repository;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.gm.tweak.domain.User;
 import com.gm.tweak.helper.TestUtils;
-import com.gm.tweak.repository.UserRepository;
-import com.gm.tweak.repository.UserTestRepository;
 
 public class UserRepositoryTest {
 

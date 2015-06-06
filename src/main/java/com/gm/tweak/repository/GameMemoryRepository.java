@@ -15,7 +15,7 @@ public class GameMemoryRepository implements GameRepository {
 
 	@Override
 	public void save(Game game) {
-		this.games.put(game.getGameId().getId(), game);
+		 this.games.put(game.getGameId().getId(), game);
 	}
 
 	@Override
