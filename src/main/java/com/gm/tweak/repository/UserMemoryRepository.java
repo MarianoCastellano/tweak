@@ -7,7 +7,6 @@ import java.util.UUID;
 import com.gm.tweak.domain.User;
 import com.gm.tweak.exception.UserNotFoundException;
 
-//TODO CR-NANO: Es para test? o es en memoria? =).
 public class UserMemoryRepository implements UserRepository {
 
 	private Map<String, User> users;
