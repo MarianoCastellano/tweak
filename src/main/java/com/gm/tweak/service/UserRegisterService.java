@@ -12,7 +12,7 @@ public class UserRegisterService {
 	}
 
 	public User register(String email, String username, String password) {
-		return userRepository.save(new User(email, username, password));
+		return userRepository.save(new User(userRepository.getId(),email, username, password));
 	}
 
 }

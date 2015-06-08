@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import com.gm.tweak.domain.User;
 import com.gm.tweak.helper.TestUtils;
-import com.gm.tweak.repository.UserTestRepository;
+import com.gm.tweak.repository.UserMemoryRepository;
 import com.gm.tweak.service.UserRegisterService;
 
 public class UserRegisterServiceTest {
@@ -15,7 +15,7 @@ public class UserRegisterServiceTest {
 	@Test
 	public void register() {
 
-		userRegisterService = new UserRegisterService(new UserTestRepository());
+		userRegisterService = new UserRegisterService(new UserMemoryRepository());
 
 		String email = "email";
 		String username = "username";

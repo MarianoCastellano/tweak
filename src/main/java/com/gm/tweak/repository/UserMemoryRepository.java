@@ -8,28 +8,25 @@ import com.gm.tweak.domain.User;
 import com.gm.tweak.exception.UserNotFoundException;
 
 //TODO CR-NANO: Es para test? o es en memoria? =).
-public class UserTestRepository implements UserRepository {
+public class UserMemoryRepository implements UserRepository {
 
-	private Map<Long, User> users;
+	private Map<String, User> users;
 
-	public UserTestRepository() {
-		users = new HashMap<Long, User>();
+	public UserMemoryRepository() {
+		users = new HashMap<String, User>();
 	}
 
 	@Override
 	public User save(User user) {
-		long id = UUID.randomUUID().getMostSignificantBits();
-		user.assignId(id);
-		users.put(id, user);
+		users.put(user.getId(), user);
 		return user;
 	}
 
 	@Override
-	public User findById(Long id) throws Exception {
+	public User findById(String id) throws Exception {
 		User user = users.get(id);
 		if (user == null) {
-			// TODO CR-NANO: Lanzar la exception correcta. Abajo lo haces!
-			throw new Exception("USER NOT FOUND");
+			throw new UserNotFoundException("USER NOT FOUND");
 		}
 		return user;
 	}
@@ -42,5 +39,11 @@ public class UserTestRepository implements UserRepository {
 			}
 		}
 		throw new UserNotFoundException("USER NOT FOUND");
+	}
+
+	@Override
+	public String getId() {
+		return new String(UUID.randomUUID().toString());
+
 	}
 }

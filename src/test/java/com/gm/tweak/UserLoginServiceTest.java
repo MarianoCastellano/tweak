@@ -9,7 +9,7 @@ import com.gm.tweak.exception.ErrorCode;
 import com.gm.tweak.exception.InvalidPasswordException;
 import com.gm.tweak.exception.UserNotFoundException;
 import com.gm.tweak.helper.TestUtils;
-import com.gm.tweak.repository.UserTestRepository;
+import com.gm.tweak.repository.UserMemoryRepository;
 import com.gm.tweak.service.UserLoginService;
 import com.gm.tweak.service.UserRegisterService;
 
@@ -20,14 +20,14 @@ public class UserLoginServiceTest {
 
 	@Before
 	public void init() {
-		UserTestRepository userRepository = new UserTestRepository();
+		UserMemoryRepository userRepository = new UserMemoryRepository();
 		userLoginService = new UserLoginService(userRepository);
 		userRegisterService = new UserRegisterService(userRepository);
 	}
 
 	@Test
 	public void successLogin() {
-		User user = TestUtils.createDefaultUser();
+		User user = new User("1", "lala", "lala", "lala");
 		userRegisterService.register(user.getEmail(), user.getUsername(), user.getPassword());
 
 		User userFound = null;

@@ -6,10 +6,6 @@ import com.gm.tweak.domain.User;
 
 public class TestUtils {
 
-	public static User createDefaultUser() {
-		return new User("DEFAULT_EMAIL", "DEFAULT_USERNAME", "DEFAULT_PASSWORD");
-	}
-
 	public static void assertUserIsValid(User user) {
 		Assert.assertNotNull(user);
 		Assert.assertNotNull(user.getId());

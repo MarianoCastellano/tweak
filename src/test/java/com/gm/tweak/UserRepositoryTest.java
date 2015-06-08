@@ -6,17 +6,16 @@ import org.junit.Test;
 import com.gm.tweak.domain.User;
 import com.gm.tweak.helper.TestUtils;
 import com.gm.tweak.repository.UserRepository;
-import com.gm.tweak.repository.UserTestRepository;
+import com.gm.tweak.repository.UserMemoryRepository;
 
 public class UserRepositoryTest {
 
-	private UserRepository userRepository = new UserTestRepository();
+	private UserRepository userRepository = new UserMemoryRepository();
 
 	@Test
 	public void save() {
 
-		User userToSave = TestUtils.createDefaultUser();
-
+		User userToSave = new User("1", "lala", "lala", "lala");
 		User savedUser = userRepository.save(userToSave);
 
 		TestUtils.assertUserIsValid(savedUser);
@@ -29,7 +28,8 @@ public class UserRepositoryTest {
 	@Test
 	public void findById() {
 
-		User savedUser = userRepository.save(TestUtils.createDefaultUser());
+		User savedUser = new User("1", "lala", "lala", "lala");
+		userRepository.save(savedUser);
 
 		User foundUser = null;
 		try {
