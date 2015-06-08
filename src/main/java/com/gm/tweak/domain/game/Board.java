@@ -4,8 +4,8 @@ public class Board {
 
 	private byte[] image;
 
-	public Board() {
-		this.image = new byte[1];
+	public Board(byte[] image) {
+		this.image = image;
 	}
 
 	public byte[] getImage() {

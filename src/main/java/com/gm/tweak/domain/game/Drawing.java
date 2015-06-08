@@ -1,11 +1,32 @@
 package com.gm.tweak.domain.game;
 
-public interface Drawing {
+public class Drawing {
 
-	public Player getArtist();
+	private PlayerId artistId;
+	private Word word;
+	private Price price;
+	private Board board;
 
-	public Board getBoard();
+	public Drawing(PlayerId artistId, Board board, Word word) {
+		this.artistId = artistId;
+		this.board = board;
+		this.price = new Price(new Long(1));
+		this.word = word;
+	}
 
-	public Price getPrice();
+	public PlayerId getArtistId() {
+		return artistId;
+	}
 
+	public Board getBoard() {
+		return board;
+	}
+
+	public Price getPrice() {
+		return price;
+	}
+
+	public Word getWord() {
+		return word;
+	}
 }

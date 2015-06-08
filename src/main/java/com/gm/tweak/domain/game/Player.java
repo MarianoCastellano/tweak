@@ -7,7 +7,7 @@ public class Player {
 
 	public Player(PlayerId playerId) {
 		this.playerId = playerId;
-		this.coins = new Long(10);
+		this.coins = new Long(30);
 	}
 
 	public void addCoins(Long coinsEarned) {
