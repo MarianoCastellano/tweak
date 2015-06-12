@@ -24,6 +24,8 @@ public class GameTest {
 
 		Game game = new Game(new GameId("1"), new Drawing(artistId, new Board(new byte[1]), new Word("Stone")), artist);
 
+		game.tryWord(diviner, new Word("Stone"));
+		
 		Assert.assertEquals(new Long(30), diviner.getCoins());
 		Assert.assertEquals(new Long(30), artist.getCoins());
 
@@ -31,6 +33,8 @@ public class GameTest {
 		Assert.assertEquals(divinerId, diviner.getPlayerId());
 
 		Assert.assertEquals(new Long(1), game.getDrawing().getPrice().getValue());
-
+		
+		Assert.assertFalse(game.getDomainEvents().isEmpty());
+		
 	}
 }

@@ -22,6 +22,8 @@ public class Game {
 		boolean playerWon = drawing.getWord().equals(word);
 		if (playerWon) {
 			domainEvents.add(new PlayerWonDomainEvent(diviner));
+		}else {
+			drawing.raisePrice();
 		}
 		return playerWon;
 	}

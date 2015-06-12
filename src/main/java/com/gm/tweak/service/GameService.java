@@ -38,7 +38,6 @@ public class GameService {
 	}
 
 	private void handle(Game game) {
-
 		for (PlayerEvent event : game.getDomainEvents()) {
 			Long coinsReward = game.getDrawing().getPrice().getValue();
 			event.getPlayer().addCoins(coinsReward);

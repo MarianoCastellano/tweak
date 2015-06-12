@@ -11,6 +11,10 @@ public class Drawing {
 		this.price = new Price(new Long(1));
 		this.word = word;
 	}
+	
+	public void raisePrice (){
+		this.price.incrementValue();
+	}
 
 	public Board getBoard() {
 		return board;

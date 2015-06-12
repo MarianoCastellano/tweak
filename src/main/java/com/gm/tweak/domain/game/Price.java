@@ -12,4 +12,14 @@ public class Price {
 		return value;
 	}
 
+	public void incrementValue() {
+		this.value ++;
+	}
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.value.equals(((Price) obj).getValue());
+	}
+	
 }
