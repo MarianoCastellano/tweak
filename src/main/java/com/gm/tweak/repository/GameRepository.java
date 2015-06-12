@@ -13,4 +13,6 @@ public interface GameRepository {
 
 	List<Game> findAll();
 
+	Game findById(GameId gameId);
+
 }

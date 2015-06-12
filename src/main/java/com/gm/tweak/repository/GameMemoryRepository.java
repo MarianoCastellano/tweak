@@ -28,4 +28,9 @@ public class GameMemoryRepository implements GameRepository {
 	public List<Game> findAll() {
 		return new ArrayList<Game>(this.games.values());
 	}
+
+	@Override
+	public Game findById(GameId gameId) {
+		return this.games.get(gameId.getId());
+	}
 }

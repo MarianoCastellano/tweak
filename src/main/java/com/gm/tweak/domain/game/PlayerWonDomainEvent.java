@@ -1,14 +1,15 @@
 package com.gm.tweak.domain.game;
 
-public class PlayerWonDomainEvent {
+public class PlayerWonDomainEvent implements PlayerEvent {
 
-	private Player diviner;
+	private Player player;
 
-	public PlayerWonDomainEvent(Player diviner) {
-		this.diviner = diviner;
+	public PlayerWonDomainEvent(Player player) {
+		this.player = player;
 	}
 
-	public Player getDiviner() {
-		return diviner;
+	@Override
+	public Player getPlayer() {
+		return player;
 	}
 }
