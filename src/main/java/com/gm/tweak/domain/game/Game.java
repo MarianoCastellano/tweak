@@ -1,7 +1,8 @@
 package com.gm.tweak.domain.game;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.gm.tweak.domain.game.event.AddCoinPlayerEvent;
+import com.gm.tweak.domain.game.event.DomainEvent;
+import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
 
 public class Game {
 
@@ -9,27 +10,21 @@ public class Game {
 	private Player gameCreator;
 	private Drawing drawing;
 
-	private List<PlayerEvent> domainEvents;
-
 	public Game(GameId gameId, Drawing drawing, Player gameCreator) {
 		this.gameId = gameId;
 		this.drawing = drawing;
 		this.gameCreator = gameCreator;
-		domainEvents = new ArrayList<PlayerEvent>();
 	}
 
-	public Boolean tryWord(Player diviner, Word word) {
+	public void tryWord(Player diviner, Word word) {
 		boolean playerWon = drawing.getWord().equals(word);
 		if (playerWon) {
-			domainEvents.add(new PlayerWonDomainEvent(diviner));
-		}else {
+			DomainEvent domainEvent = new PlayerWonDomainEvent();
+			domainEvent.attach(new AddCoinPlayerEvent());
+			domainEvent.notifyEvents(this, diviner);
+		} else {
 			drawing.raisePrice();
 		}
-		return playerWon;
-	}
-
-	public List<PlayerEvent> getDomainEvents() {
-		return domainEvents;
 	}
 
 	public Player getGameCreator() {

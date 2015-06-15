@@ -14,7 +14,7 @@ import com.gm.tweak.domain.game.Word;
 public class GameTest {
 
 	@Test
-	public void playerGuessTheWord() throws Exception {
+	public void tryWordShouldAddCoinsToPlayers() throws Exception {
 
 		PlayerId artistId = new PlayerId("1");
 		Player artist = new Player(artistId);
@@ -25,16 +25,8 @@ public class GameTest {
 		Game game = new Game(new GameId("1"), new Drawing(artistId, new Board(new byte[1]), new Word("Stone")), artist);
 
 		game.tryWord(diviner, new Word("Stone"));
-		
-		Assert.assertEquals(new Long(30), diviner.getCoins());
-		Assert.assertEquals(new Long(30), artist.getCoins());
 
-		Assert.assertEquals(artistId, artist.getPlayerId());
-		Assert.assertEquals(divinerId, diviner.getPlayerId());
-
-		Assert.assertEquals(new Long(1), game.getDrawing().getPrice().getValue());
-		
-		Assert.assertFalse(game.getDomainEvents().isEmpty());
-		
+		Assert.assertEquals(new Long(31), diviner.getCoins());
+		Assert.assertEquals(new Long(31), artist.getCoins());
 	}
 }
