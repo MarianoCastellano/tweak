@@ -1,54 +1,45 @@
 package com.gm.tweak.domain.game;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.gm.tweak.domain.game.event.AddCoinPlayerEvent;
+import com.gm.tweak.domain.game.event.DomainEvent;
+import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
 
 public class Game {
 
 	private GameId gameId;
-	private PlayerId playerIdCreator;
+	private Player gameCreator;
 	private Drawing drawing;
-	private List<DomainEvent> events = new ArrayList<DomainEvent>();
 
-	public Game(GameId gameId, PlayerId playerId, Drawing drawing) {
+	public Game(GameId gameId, Drawing drawing, Player gameCreator) {
 		this.gameId = gameId;
-		this.playerIdCreator = playerId;
 		this.drawing = drawing;
+		this.gameCreator = gameCreator;
 	}
 
-	public void addEvent(DomainEvent domainEvent) {
-		this.events.add(domainEvent);
+	public void tryWord(Player diviner, Word word) {
+		boolean playerWon = drawing.getWord().equals(word);
+		if (playerWon) {
+			DomainEvent domainEvent = new PlayerWonDomainEvent();
+			domainEvent.attach(new AddCoinPlayerEvent());
+			domainEvent.notifyEvents(this, diviner);
+		} else {
+			drawing.raisePrice();
+		}
 	}
 
-	public void handleEvents() {
-		new PlayerGuessTheWordEventHandler().handle((PlayerGuessTheDrawingEvent) events.iterator().next());
+	public Player getGameCreator() {
+		return gameCreator;
 	}
 
 	public GameId getGameId() {
 		return gameId;
 	}
 
-	public PlayerId getPlayerIdCreator() {
-		return playerIdCreator;
+	public Word getWord() {
+		return drawing.getWord();
 	}
 
 	public Drawing getDrawing() {
 		return drawing;
-	}
-
-	@Override
-	public boolean equals(final Object object) {
-		if (this == object)
-			return true;
-		if (object == null || getClass() != object.getClass())
-			return false;
-
-		final Game other = (Game) object;
-		return other != null && gameId.equals(other.gameId);
-	}
-
-	@Override
-	public int hashCode() {
-		return gameId.hashCode();
 	}
 }

@@ -15,7 +15,7 @@ public class GameMemoryRepository implements GameRepository {
 
 	@Override
 	public void save(Game game) {
-		this.games.put(game.getGameId().getId(), game);
+		 this.games.put(game.getGameId().getId(), game);
 	}
 
 	@Override
@@ -27,5 +27,10 @@ public class GameMemoryRepository implements GameRepository {
 	@Override
 	public List<Game> findAll() {
 		return new ArrayList<Game>(this.games.values());
+	}
+
+	@Override
+	public Game findById(GameId gameId) {
+		return this.games.get(gameId.getId());
 	}
 }
