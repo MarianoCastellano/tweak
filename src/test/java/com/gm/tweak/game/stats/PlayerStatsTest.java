@@ -32,6 +32,7 @@ public class PlayerStatsTest {
 	private void thenPlayerStatsAreUpdated() {
 		Assert.assertEquals(new Long(1), playerDiviner.getDivinedDrawingsAmount());
 		Assert.assertEquals(new Long(1), playerCreator.getMadeDrawingsAmount());
+		Assert.assertEquals(new Long(1), playerCreator.getDrawingsThatWereGuessToMe());
 	}
 
 	private void whenDivinerGuessTheDrawingOfGameCreator() {
@@ -41,10 +42,10 @@ public class PlayerStatsTest {
 	}
 
 	private void andADivinerPlayer() {
-		this.playerDiviner = new Player(new PlayerId("2"), new PlayerStats(0L, 0L));
+		this.playerDiviner = new Player(new PlayerId("2"), new PlayerStats(0L, 0L, 0L));
 	}
 
 	private void givenAPlayerCreator() {
-		this.playerCreator = new Player(new PlayerId("1"), new PlayerStats(0L, 0L));
+		this.playerCreator = new Player(new PlayerId("1"), new PlayerStats(0L, 0L, 0L));
 	}
 }

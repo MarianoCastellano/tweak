@@ -4,10 +4,12 @@ public class PlayerStats {
 
 	private Long madeDrawings;
 	private Long divinedDrawings;
+	private Long drawingsThatWereGuessToMe;
 
-	public PlayerStats(Long madeDrawings, Long divinedDrawings) {
+	public PlayerStats(Long madeDrawings, Long divinedDrawings, Long drawingsThatWereGuessToMe) {
 		this.madeDrawings = madeDrawings;
 		this.divinedDrawings = divinedDrawings;
+		this.drawingsThatWereGuessToMe = drawingsThatWereGuessToMe;
 	}
 
 	public void incrementMadeDrawings() {
@@ -16,6 +18,14 @@ public class PlayerStats {
 
 	public void incrementDivinedDrawings() {
 		this.divinedDrawings++;
+	}
+
+	public void incrementDrawingsThatWereGuessToMe() {
+		this.drawingsThatWereGuessToMe++;
+	}
+
+	public Long getDrawingsThatWereGuessToMe() {
+		return drawingsThatWereGuessToMe;
 	}
 
 	public Long getMadeDrawingsAmount() {

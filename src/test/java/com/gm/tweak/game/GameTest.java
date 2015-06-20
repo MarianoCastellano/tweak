@@ -18,10 +18,10 @@ public class GameTest {
 	public void tryWordShouldAddCoinsToPlayers() throws Exception {
 
 		PlayerId artistId = new PlayerId("1");
-		Player artist = new Player(artistId, new PlayerStats(0L, 0L));
+		Player artist = new Player(artistId, new PlayerStats(0L, 0L, 0L));
 
 		PlayerId divinerId = new PlayerId("2");
-		Player diviner = new Player(divinerId, new PlayerStats(0L, 0L));
+		Player diviner = new Player(divinerId, new PlayerStats(0L, 0L, 0L));
 
 		Game game = new Game(new GameId("1"), new Drawing(artistId, new Board(new byte[1]), new Word("Stone")), artist);
 

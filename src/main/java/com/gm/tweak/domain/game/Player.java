@@ -19,9 +19,14 @@ public class Player {
 	public void incrementMadeDrawings() {
 		this.playerStats.incrementMadeDrawings();
 	}
-	
+
 	public void incrementDivinedDrawings() {
 		this.playerStats.incrementDivinedDrawings();
+	}
+
+	public void incrementDrawingsThatWereGuessToMe() {
+		this.playerStats.incrementDrawingsThatWereGuessToMe();
+		;
 	}
 
 	public Long getCoins() {
@@ -31,15 +36,18 @@ public class Player {
 	public PlayerId getPlayerId() {
 		return playerId;
 	}
-	
+
 	public Long getMadeDrawingsAmount() {
 		return this.playerStats.getMadeDrawingsAmount();
 	}
-	
+
 	public Long getDivinedDrawingsAmount() {
 		return this.playerStats.getDivinedDrawingsAmount();
 	}
 
+	public Long getDrawingsThatWereGuessToMe() {
+		return this.playerStats.getDrawingsThatWereGuessToMe();
+	}
 
 	@Override
 	public int hashCode() {
@@ -66,5 +74,4 @@ public class Player {
 		return true;
 	}
 
-	
 }
