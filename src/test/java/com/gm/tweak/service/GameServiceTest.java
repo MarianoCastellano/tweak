@@ -11,6 +11,7 @@ import com.gm.tweak.domain.game.Drawing;
 import com.gm.tweak.domain.game.Game;
 import com.gm.tweak.domain.game.Player;
 import com.gm.tweak.domain.game.PlayerId;
+import com.gm.tweak.domain.game.PlayerStats;
 import com.gm.tweak.domain.game.Price;
 import com.gm.tweak.domain.game.Word;
 import com.gm.tweak.repository.GameMemoryRepository;
@@ -27,10 +28,9 @@ public class GameServiceTest {
 	@Test
 	public void createGame() {
 		PlayerId playerId = new PlayerId("1");
-		Player player = new Player(playerId);
+		Player player = new Player(playerId, new PlayerStats(0L, 0L));
 
-		Game game = gameService.create(new Drawing(playerId, new Board(
-				new byte[1]), new Word("Stone")), player);
+		Game game = gameService.create(new Drawing(playerId, new Board(new byte[1]), new Word("Stone")), player);
 		List<Game> allGames = gameService.findAllGames();
 		Assert.assertTrue(allGames.contains(game));
 		Assert.assertEquals(1, allGames.size());
@@ -40,13 +40,11 @@ public class GameServiceTest {
 	@Test
 	public void playerWonTheGame() {
 		PlayerId playerId = new PlayerId("1");
-		Player player = new Player(playerId);
+		Player player = new Player(playerId,new PlayerStats(0L, 0L));
 
-		Game game = gameService.create(new Drawing(playerId, new Board(
-				new byte[1]), new Word("Stone")), player);
+		Game game = gameService.create(new Drawing(playerId, new Board(new byte[1]), new Word("Stone")), player);
 
-		gameService.tryWord(game.getGameId(), new Player(new PlayerId("2")),
-				new Word("Stone"));
+		gameService.tryWord(game.getGameId(), new Player(new PlayerId("2"),new PlayerStats(0L, 0L)), new Word("Stone"));
 
 		Long coins = game.getGameCreator().getCoins();
 		Assert.assertEquals(new Long(31), coins);
@@ -55,18 +53,14 @@ public class GameServiceTest {
 	@Test
 	public void drawingIncrementsPrice() {
 		PlayerId playerId = new PlayerId("1");
-		Player player = new Player(playerId);
+		Player player = new Player(playerId,new PlayerStats(0L, 0L));
 
-		Game game = gameService.create(new Drawing(playerId, new Board(
-				new byte[1]), new Word("Stone")), player);
+		Game game = gameService.create(new Drawing(playerId, new Board(new byte[1]), new Word("Stone")), player);
 
-		gameService.tryWord(game.getGameId(), new Player(new PlayerId("2")),
-				new Word("Asdas"));
-		gameService.tryWord(game.getGameId(), new Player(new PlayerId("2")),
-				new Word("Magada"));
+		gameService.tryWord(game.getGameId(), new Player(new PlayerId("2"),new PlayerStats(0L, 0L)), new Word("Asdas"));
+		gameService.tryWord(game.getGameId(), new Player(new PlayerId("2"),new PlayerStats(0L, 0L)), new Word("Magada"));
 
 		Price drawingPrice = game.getDrawing().getPrice();
 		Assert.assertEquals(new Price(new Long(3)), drawingPrice);
-
 	}
 }

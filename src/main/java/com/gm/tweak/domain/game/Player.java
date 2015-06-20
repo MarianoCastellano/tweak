@@ -4,14 +4,24 @@ public class Player {
 
 	private PlayerId playerId;
 	private Long coins;
+	private PlayerStats playerStats;
 
-	public Player(PlayerId playerId) {
+	public Player(PlayerId playerId, PlayerStats playerStats) {
 		this.playerId = playerId;
 		this.coins = new Long(30);
+		this.playerStats = playerStats;
 	}
 
 	public void addCoins(Long coinsEarned) {
 		this.coins += coinsEarned;
+	}
+
+	public void incrementMadeDrawings() {
+		this.playerStats.incrementMadeDrawings();
+	}
+	
+	public void incrementDivinedDrawings() {
+		this.playerStats.incrementDivinedDrawings();
 	}
 
 	public Long getCoins() {
@@ -21,6 +31,15 @@ public class Player {
 	public PlayerId getPlayerId() {
 		return playerId;
 	}
+	
+	public Long getMadeDrawingsAmount() {
+		return this.playerStats.getMadeDrawingsAmount();
+	}
+	
+	public Long getDivinedDrawingsAmount() {
+		return this.playerStats.getDivinedDrawingsAmount();
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -47,4 +66,5 @@ public class Player {
 		return true;
 	}
 
+	
 }

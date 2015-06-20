@@ -21,6 +21,7 @@ public class Game {
 		if (playerWon) {
 			DomainEvent domainEvent = new PlayerWonDomainEvent();
 			domainEvent.attach(new AddCoinPlayerEvent());
+			domainEvent.attach(new UpdateStatsPlayerEvent());
 			domainEvent.notifyEvents(this, diviner);
 		} else {
 			drawing.raisePrice();
