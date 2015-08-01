@@ -1,4 +1,5 @@
-package com.gm.tweak.domain.game;
+package com.gm.tweak.domain.game.stats;
+
 
 public class PlayerStats {
 

@@ -9,8 +9,8 @@ import com.gm.tweak.domain.game.Game;
 import com.gm.tweak.domain.game.GameId;
 import com.gm.tweak.domain.game.Player;
 import com.gm.tweak.domain.game.PlayerId;
-import com.gm.tweak.domain.game.PlayerStats;
 import com.gm.tweak.domain.game.Word;
+import com.gm.tweak.domain.game.stats.PlayerStats;
 
 public class PlayerStatsTest {
 

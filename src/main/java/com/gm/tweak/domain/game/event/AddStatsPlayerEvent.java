@@ -1,8 +1,9 @@
-package com.gm.tweak.domain.game;
+package com.gm.tweak.domain.game.event;
 
-import com.gm.tweak.domain.game.event.PlayerEvent;
+import com.gm.tweak.domain.game.Game;
+import com.gm.tweak.domain.game.Player;
 
-public class UpdateStatsPlayerEvent implements PlayerEvent {
+public class AddStatsPlayerEvent implements PlayerEvent {
 
 	@Override
 	public void update(Game game, Player playerDiviner) {

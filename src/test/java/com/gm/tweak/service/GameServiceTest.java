@@ -11,9 +11,9 @@ import com.gm.tweak.domain.game.Drawing;
 import com.gm.tweak.domain.game.Game;
 import com.gm.tweak.domain.game.Player;
 import com.gm.tweak.domain.game.PlayerId;
-import com.gm.tweak.domain.game.PlayerStats;
 import com.gm.tweak.domain.game.Price;
 import com.gm.tweak.domain.game.Word;
+import com.gm.tweak.domain.game.stats.PlayerStats;
 import com.gm.tweak.repository.GameMemoryRepository;
 
 public class GameServiceTest {
