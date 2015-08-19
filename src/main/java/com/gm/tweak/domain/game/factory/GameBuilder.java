@@ -4,12 +4,18 @@ import com.gm.tweak.domain.game.Drawing;
 import com.gm.tweak.domain.game.Game;
 import com.gm.tweak.domain.game.GameId;
 import com.gm.tweak.domain.game.Player;
+import com.gm.tweak.domain.game.event.AddAchievementsPlayerEvent;
+import com.gm.tweak.domain.game.event.AddCoinPlayerEvent;
+import com.gm.tweak.domain.game.event.AddStatsPlayerEvent;
+import com.gm.tweak.domain.game.event.DomainEvent;
+import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
 
 public class GameBuilder {
 
 	private GameId gameId;
 	private Drawing drawing;
 	private Player playerCreator;
+	private DomainEvent domainEvent;
 
 	public GameBuilder withGameId(GameId gameId) {
 		this.gameId = gameId;
@@ -26,8 +32,16 @@ public class GameBuilder {
 		return this;
 	}
 
+	public GameBuilder withDomainEvent(DomainEvent domainEvent) {
+		this.domainEvent = domainEvent;
+		this.domainEvent.attach(new AddCoinPlayerEvent());
+		this.domainEvent.attach(new AddStatsPlayerEvent());
+		this.domainEvent.attach(new AddAchievementsPlayerEvent());
+		return this;
+	}
+
 	public Game build() {
-		return new Game(gameId, drawing,playerCreator);
+		return new Game(gameId, drawing, playerCreator, domainEvent);
 	}
 
 }

@@ -10,6 +10,8 @@ import com.gm.tweak.domain.game.GameId;
 import com.gm.tweak.domain.game.Player;
 import com.gm.tweak.domain.game.PlayerId;
 import com.gm.tweak.domain.game.Word;
+import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
+import com.gm.tweak.domain.game.factory.GameBuilder;
 import com.gm.tweak.domain.game.stats.PlayerStats;
 
 public class GameTest {
@@ -22,7 +24,9 @@ public class GameTest {
 
 		Player diviner = givenAPlayerDiviner();
 
-		Game game = new Game(new GameId("1"), new Drawing(artistId, new Board(new byte[1]), new Word("Stone")), artist);
+		Game game = new GameBuilder().withGameId(new GameId("1"))
+				.withDrawing(new Drawing(artistId, new Board(new byte[1]), new Word("Stone"))).withPlayerCreator(artist)
+				.withDomainEvent(new PlayerWonDomainEvent()).build();
 
 		game.tryWord(diviner, new Word("Stone"));
 
@@ -46,8 +50,9 @@ public class GameTest {
 
 	private void playerDivinerDivineAmountOfGames(Player diviner, PlayerId artistId, Player artist, int gamesAmount) {
 		for (int i = 0; i < gamesAmount; i++) {
-			Game game = new Game(new GameId(String.valueOf(i)), new Drawing(artistId, new Board(new byte[1]), new Word("Stone"
-					+ i)), artist);
+			Game game = new GameBuilder().withGameId(new GameId(String.valueOf(i)))
+					.withDrawing(new Drawing(artistId, new Board(new byte[1]), new Word("Stone" + i))).withPlayerCreator(artist)
+					.withDomainEvent(new PlayerWonDomainEvent()).build();
 			game.tryWord(diviner, new Word("Stone" + i));
 		}
 	}

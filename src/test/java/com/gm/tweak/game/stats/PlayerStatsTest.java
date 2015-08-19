@@ -10,6 +10,8 @@ import com.gm.tweak.domain.game.GameId;
 import com.gm.tweak.domain.game.Player;
 import com.gm.tweak.domain.game.PlayerId;
 import com.gm.tweak.domain.game.Word;
+import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
+import com.gm.tweak.domain.game.factory.GameBuilder;
 import com.gm.tweak.domain.game.stats.PlayerStats;
 
 public class PlayerStatsTest {
@@ -36,8 +38,9 @@ public class PlayerStatsTest {
 	}
 
 	private void whenDivinerGuessTheDrawingOfGameCreator() {
-		Game game = new Game(new GameId("1"),
-				new Drawing(playerCreator.getPlayerId(), new Board(new byte[1]), new Word("Stone")), playerCreator);
+		Game game = new GameBuilder().withGameId(new GameId("GameId"))
+				.withDrawing(new Drawing(playerCreator.getPlayerId(), new Board(new byte[1]), new Word("Stone")))
+				.withPlayerCreator(playerCreator).withDomainEvent(new PlayerWonDomainEvent()).build();
 		game.tryWord(playerDiviner, new Word("Stone"));
 	}
 

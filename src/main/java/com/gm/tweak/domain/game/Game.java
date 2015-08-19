@@ -1,31 +1,24 @@
 package com.gm.tweak.domain.game;
 
-import com.gm.tweak.domain.game.event.AddAchievementsPlayerEvent;
-import com.gm.tweak.domain.game.event.AddCoinPlayerEvent;
 import com.gm.tweak.domain.game.event.DomainEvent;
-import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
-import com.gm.tweak.domain.game.event.AddStatsPlayerEvent;
 
 public class Game {
 
 	private GameId gameId;
 	private Player gameCreator;
 	private Drawing drawing;
+	private DomainEvent domainEvent;
 
-	public Game(GameId gameId, Drawing drawing, Player gameCreator) {
+	public Game(GameId gameId, Drawing drawing, Player gameCreator, DomainEvent domainEvent) {
 		this.gameId = gameId;
 		this.drawing = drawing;
 		this.gameCreator = gameCreator;
+		this.domainEvent = domainEvent;
 	}
 
 	public void tryWord(Player diviner, Word word) {
 		boolean playerWon = drawing.getWord().equals(word);
 		if (playerWon) {
-			// desacoplar esta logica y llevarla a un game observer
-			DomainEvent domainEvent = new PlayerWonDomainEvent();
-			domainEvent.attach(new AddCoinPlayerEvent());
-			domainEvent.attach(new AddStatsPlayerEvent());
-			domainEvent.attach(new AddAchievementsPlayerEvent());
 			domainEvent.notifyEvents(this, diviner);
 		} else {
 			drawing.raisePrice();
