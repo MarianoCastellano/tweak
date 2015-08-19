@@ -25,7 +25,7 @@ public class Game {
 		}
 	}
 
-	public Player getGameCreator() {
+	public Player getPlayerCreator() {
 		return gameCreator;
 	}
 

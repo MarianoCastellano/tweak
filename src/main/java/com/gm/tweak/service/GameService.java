@@ -9,6 +9,7 @@ import com.gm.tweak.domain.game.Player;
 import com.gm.tweak.domain.game.Word;
 import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
 import com.gm.tweak.domain.game.factory.GameBuilder;
+import com.gm.tweak.exception.GameCreationException;
 import com.gm.tweak.repository.GameRepository;
 
 public class GameService {
@@ -19,7 +20,7 @@ public class GameService {
 		this.gameRepository = gameRepository;
 	}
 
-	public Game create(Drawing drawing, Player gameCreator) {
+	public Game create(Drawing drawing, Player gameCreator) throws GameCreationException {
 		GameId gameId = gameRepository.nextGameId();
 
 		Game game = new GameBuilder().withGameId(gameId).withDrawing(drawing).withPlayerCreator(gameCreator)

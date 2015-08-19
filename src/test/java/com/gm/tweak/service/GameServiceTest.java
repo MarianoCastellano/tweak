@@ -14,6 +14,7 @@ import com.gm.tweak.domain.game.PlayerId;
 import com.gm.tweak.domain.game.Price;
 import com.gm.tweak.domain.game.Word;
 import com.gm.tweak.domain.game.stats.PlayerStats;
+import com.gm.tweak.exception.GameCreationException;
 import com.gm.tweak.repository.GameMemoryRepository;
 
 public class GameServiceTest {
@@ -26,7 +27,7 @@ public class GameServiceTest {
 	}
 
 	@Test
-	public void createGame() {
+	public void createGame() throws GameCreationException {
 		PlayerId playerId = new PlayerId("1");
 		Player player = new Player(playerId, new PlayerStats(0L, 0L, 0L));
 
@@ -38,7 +39,7 @@ public class GameServiceTest {
 	}
 
 	@Test
-	public void playerWonTheGame() {
+	public void playerWonTheGame() throws GameCreationException {
 		PlayerId playerId = new PlayerId("1");
 		Player player = new Player(playerId,new PlayerStats(0L, 0L, 0L));
 
@@ -46,12 +47,12 @@ public class GameServiceTest {
 
 		gameService.tryWord(game.getGameId(), new Player(new PlayerId("2"),new PlayerStats(0L, 0L, 0L)), new Word("Stone"));
 
-		Long coins = game.getGameCreator().getCoins();
+		Long coins = game.getPlayerCreator().getCoins();
 		Assert.assertEquals(new Long(31), coins);
 	}
 
 	@Test
-	public void drawingIncrementsPrice() {
+	public void drawingIncrementsPrice() throws GameCreationException {
 		PlayerId playerId = new PlayerId("1");
 		Player player = new Player(playerId,new PlayerStats(0L, 0L, 0L));
 

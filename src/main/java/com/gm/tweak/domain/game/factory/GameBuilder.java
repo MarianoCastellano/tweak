@@ -9,6 +9,8 @@ import com.gm.tweak.domain.game.event.AddCoinPlayerEvent;
 import com.gm.tweak.domain.game.event.AddStatsPlayerEvent;
 import com.gm.tweak.domain.game.event.DomainEvent;
 import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
+import com.gm.tweak.exception.GameCreationException;
+import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
 
 public class GameBuilder {
 
@@ -40,8 +42,21 @@ public class GameBuilder {
 		return this;
 	}
 
-	public Game build() {
-		return new Game(gameId, drawing, playerCreator, domainEvent);
+	public Game build() throws GameCreationException {
+		validate();
+		Game game = new Game(gameId, drawing, playerCreator, domainEvent);
+		return game;
+	}
+
+	private void validate() throws GameCreationException {
+		if (ifGameContainsNullProperties()) {
+			throw new GameCreationException("Cannot create game");
+		}
+		
+	}
+
+	private boolean ifGameContainsNullProperties() {
+		return !(gameId!= null && drawing!= null && playerCreator!= null && domainEvent != null);
 	}
 
 }

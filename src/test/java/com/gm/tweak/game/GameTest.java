@@ -13,6 +13,7 @@ import com.gm.tweak.domain.game.Word;
 import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
 import com.gm.tweak.domain.game.factory.GameBuilder;
 import com.gm.tweak.domain.game.stats.PlayerStats;
+import com.gm.tweak.exception.GameCreationException;
 
 public class GameTest {
 
@@ -48,7 +49,7 @@ public class GameTest {
 
 	}
 
-	private void playerDivinerDivineAmountOfGames(Player diviner, PlayerId artistId, Player artist, int gamesAmount) {
+	private void playerDivinerDivineAmountOfGames(Player diviner, PlayerId artistId, Player artist, int gamesAmount) throws GameCreationException {
 		for (int i = 0; i < gamesAmount; i++) {
 			Game game = new GameBuilder().withGameId(new GameId(String.valueOf(i)))
 					.withDrawing(new Drawing(artistId, new Board(new byte[1]), new Word("Stone" + i))).withPlayerCreator(artist)

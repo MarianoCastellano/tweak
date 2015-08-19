@@ -9,7 +9,7 @@ public class AddCoinPlayerEvent implements PlayerEvent {
 	public void update(Game game, Player diviner) {
 		Long coinsReward = game.getDrawing().getPrice().getValue();
 		diviner.addCoins(coinsReward);
-		game.getGameCreator().addCoins(coinsReward);
+		game.getPlayerCreator().addCoins(coinsReward);
 	}
 
 }

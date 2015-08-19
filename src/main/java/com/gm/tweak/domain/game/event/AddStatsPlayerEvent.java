@@ -7,7 +7,7 @@ public class AddStatsPlayerEvent implements PlayerEvent {
 
 	@Override
 	public void update(Game game, Player playerDiviner) {
-		Player playerCreator = game.getGameCreator();
+		Player playerCreator = game.getPlayerCreator();
 		playerCreator.incrementMadeDrawings();
 		playerCreator.incrementDrawingsThatWereGuessToMe();
 		playerDiviner.incrementDivinedDrawings();

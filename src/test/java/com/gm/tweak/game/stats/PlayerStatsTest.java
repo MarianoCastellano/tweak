@@ -13,6 +13,7 @@ import com.gm.tweak.domain.game.Word;
 import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
 import com.gm.tweak.domain.game.factory.GameBuilder;
 import com.gm.tweak.domain.game.stats.PlayerStats;
+import com.gm.tweak.exception.GameCreationException;
 
 public class PlayerStatsTest {
 
@@ -20,7 +21,7 @@ public class PlayerStatsTest {
 	private Player playerDiviner;
 
 	@Test
-	public void playersStatsUpdatedWhenDrawIsDivined() {
+	public void playersStatsUpdatedWhenDrawIsDivined() throws GameCreationException {
 
 		givenAPlayerCreator();
 		andADivinerPlayer();
@@ -37,7 +38,7 @@ public class PlayerStatsTest {
 		Assert.assertEquals(new Long(1), playerCreator.getDrawingsThatWereGuessToMe());
 	}
 
-	private void whenDivinerGuessTheDrawingOfGameCreator() {
+	private void whenDivinerGuessTheDrawingOfGameCreator() throws GameCreationException {
 		Game game = new GameBuilder().withGameId(new GameId("GameId"))
 				.withDrawing(new Drawing(playerCreator.getPlayerId(), new Board(new byte[1]), new Word("Stone")))
 				.withPlayerCreator(playerCreator).withDomainEvent(new PlayerWonDomainEvent()).build();
