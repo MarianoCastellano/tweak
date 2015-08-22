@@ -1,10 +1,8 @@
 package com.gm.tweak.domain.game;
 
-import java.util.ArrayList;
-
-import com.gm.tweak.domain.game.achievements.Achievement;
-import com.gm.tweak.domain.game.achievements.Achievements;
-import com.gm.tweak.domain.game.stats.PlayerStats;
+import com.gm.tweak.domain.user.achievements.Achievement;
+import com.gm.tweak.domain.user.achievements.Achievements;
+import com.gm.tweak.domain.user.PlayerStats;
 
 public class Player {
 

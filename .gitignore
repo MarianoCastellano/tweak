@@ -5,3 +5,6 @@ target/
 .settings/*
 .metadata/*
 .project
+.idea/*
+tweak.iml
+reports/*

@@ -1,6 +1,6 @@
 package com.gm.tweak.domain.game;
 
-import com.gm.tweak.util.FieldValidator;
+import com.gm.tweak.domain.util.FieldValidator;
 
 public class PlayerId {
 

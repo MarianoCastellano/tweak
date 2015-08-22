@@ -1,6 +1,6 @@
 package com.gm.tweak.domain.game;
 
-import com.gm.tweak.domain.game.event.DomainEvent;
+import com.gm.tweak.domain.user.event.DomainEvent;
 
 public class Game {
 

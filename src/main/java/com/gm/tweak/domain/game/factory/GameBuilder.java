@@ -4,13 +4,11 @@ import com.gm.tweak.domain.game.Drawing;
 import com.gm.tweak.domain.game.Game;
 import com.gm.tweak.domain.game.GameId;
 import com.gm.tweak.domain.game.Player;
-import com.gm.tweak.domain.game.event.AddAchievementsPlayerEvent;
-import com.gm.tweak.domain.game.event.AddCoinPlayerEvent;
-import com.gm.tweak.domain.game.event.AddStatsPlayerEvent;
-import com.gm.tweak.domain.game.event.DomainEvent;
-import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
+import com.gm.tweak.domain.user.event.AddAchievementsPlayerEvent;
+import com.gm.tweak.domain.user.event.AddCoinPlayerEvent;
+import com.gm.tweak.domain.user.event.AddStatsPlayerEvent;
+import com.gm.tweak.domain.user.event.DomainEvent;
 import com.gm.tweak.exception.GameCreationException;
-import com.sun.org.apache.xerces.internal.impl.dv.ValidatedInfo;
 
 public class GameBuilder {
 

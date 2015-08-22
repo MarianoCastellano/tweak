@@ -10,9 +10,9 @@ import com.gm.tweak.domain.game.GameId;
 import com.gm.tweak.domain.game.Player;
 import com.gm.tweak.domain.game.PlayerId;
 import com.gm.tweak.domain.game.Word;
-import com.gm.tweak.domain.game.event.PlayerWonDomainEvent;
+import com.gm.tweak.domain.user.event.PlayerWonDomainEvent;
 import com.gm.tweak.domain.game.factory.GameBuilder;
-import com.gm.tweak.domain.game.stats.PlayerStats;
+import com.gm.tweak.domain.user.PlayerStats;
 import com.gm.tweak.exception.GameCreationException;
 
 public class GameTest {

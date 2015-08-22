@@ -2,7 +2,7 @@ package com.gm.tweak.helper;
 
 import org.junit.Assert;
 
-import com.gm.tweak.domain.User;
+import com.gm.tweak.domain.user.User;
 
 public class TestUtils {
 
