@@ -19,7 +19,7 @@ import com.gm.tweak.infrastructure.repository.GameMemoryRepository;
 
 public class GameServiceTest {
 
-	private GameService gameService;
+	private DefaultGameService gameService;
 
 	@Before
 	public void init() {

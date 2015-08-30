@@ -12,7 +12,7 @@ import com.gm.tweak.domain.game.factory.GameBuilder;
 import com.gm.tweak.domain.user.event.PlayerWonDomainEvent;
 import com.gm.tweak.exception.GameCreationException;
 
-public class GameService {
+public class GameService implements DefaultGameService {
 
 	private GameRepository gameRepository;
 
