@@ -2,23 +2,23 @@ package com.gm.tweak.domain.game;
 
 public class Price {
 
-	private Long value;
+	private Double value;
 
-	public Price(Long price) {
+	public Price(Double price) {
 		this.value = price;
 	}
 
-	public Long getValue() {
+	public Double getValue() {
 		return value;
 	}
 
 	public void incrementValue() {
-		this.value ++;
+		this.value++;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		return this.value.equals(((Price) obj).getValue());
 	}
-	
+
 }

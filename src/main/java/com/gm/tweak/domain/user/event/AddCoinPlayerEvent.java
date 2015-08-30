@@ -7,7 +7,7 @@ public class AddCoinPlayerEvent implements PlayerEvent {
 
 	@Override
 	public void update(Game game, Player diviner) {
-		Long coinsReward = game.getDrawing().getPrice().getValue();
+		Double coinsReward = game.getDrawing().getPrice().getValue();
 		diviner.addCoins(coinsReward);
 		game.getPlayerCreator().addCoins(coinsReward);
 	}

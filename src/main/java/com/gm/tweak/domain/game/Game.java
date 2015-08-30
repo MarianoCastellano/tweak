@@ -22,6 +22,7 @@ public class Game {
 			domainEvent.notifyEvents(this, diviner);
 		} else {
 			drawing.raisePrice();
+			diviner.substractCoins();
 		}
 	}
 

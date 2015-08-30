@@ -14,7 +14,6 @@ import com.gm.tweak.domain.game.PlayerId;
 import com.gm.tweak.domain.game.Price;
 import com.gm.tweak.domain.game.Word;
 import com.gm.tweak.domain.user.PlayerStats;
-import com.gm.tweak.domain.user.event.PlayerWonDomainEvent;
 import com.gm.tweak.exception.GameCreationException;
 import com.gm.tweak.infrastructure.repository.GameMemoryRepository;
 
@@ -34,7 +33,7 @@ public class GameServiceTest {
 		Player player = new Player(playerId, new PlayerStats(0L, 0L, 0L));
 
 		Game game = gameService.create(new Drawing(playerId, new Board(new byte[1]), new Word("Stone")),
-				player, new PlayerWonDomainEvent());
+				player);
 
 		List<Game> allGames = gameService.findAllGames();
 
@@ -49,13 +48,13 @@ public class GameServiceTest {
 		Player player = new Player(playerId, new PlayerStats(0L, 0L, 0L));
 
 		Game game = gameService.create(new Drawing(playerId, new Board(new byte[1]), new Word("Stone")),
-				player, new PlayerWonDomainEvent());
+				player);
 
 		gameService.tryWord(game.getGameId(), new Player(new PlayerId("2"), new PlayerStats(0L, 0L, 0L)),
 				new Word("Stone"));
 
-		Long coins = game.getPlayerCreator().getCoins();
-		Assert.assertEquals(new Long(31), coins);
+		Double coins = game.getPlayerCreator().getCoins();
+		Assert.assertEquals(new Long(31), coins, 0.1);
 	}
 
 	@Test
@@ -64,7 +63,7 @@ public class GameServiceTest {
 		Player player = new Player(playerId, new PlayerStats(0L, 0L, 0L));
 
 		Game game = gameService.create(new Drawing(playerId, new Board(new byte[1]), new Word("Stone")),
-				player, new PlayerWonDomainEvent());
+				player);
 
 		gameService.tryWord(game.getGameId(), new Player(new PlayerId("2"), new PlayerStats(0L, 0L, 0L)),
 				new Word("Asdas"));
@@ -72,6 +71,6 @@ public class GameServiceTest {
 				new Word("Magada"));
 
 		Price drawingPrice = game.getDrawing().getPrice();
-		Assert.assertEquals(new Price(new Long(3)), drawingPrice);
+		Assert.assertEquals(new Price(new Double(3)), drawingPrice);
 	}
 }

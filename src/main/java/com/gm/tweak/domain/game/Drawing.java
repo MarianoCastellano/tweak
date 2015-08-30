@@ -8,11 +8,11 @@ public class Drawing {
 
 	public Drawing(PlayerId artistId, Board board, Word word) {
 		this.board = board;
-		this.price = new Price(new Long(1));
+		this.price = new Price(new Double(1));
 		this.word = word;
 	}
-	
-	public void raisePrice (){
+
+	public void raisePrice() {
 		this.price.incrementValue();
 	}
 

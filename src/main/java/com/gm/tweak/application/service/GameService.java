@@ -20,13 +20,12 @@ public class GameService {
 		this.gameRepository = gameRepository;
 	}
 
-	public Game create(Drawing drawing, Player gameCreator, PlayerWonDomainEvent playerWonDomainEvent)
-			throws GameCreationException {
+	public Game create(Drawing drawing, Player gameCreator) throws GameCreationException {
 
 		GameId gameId = gameRepository.nextGameId();
 
 		Game game = new GameBuilder().withGameId(gameId).withDrawing(drawing).withPlayerCreator(gameCreator)
-				.withDomainEvent(playerWonDomainEvent).build();
+				.withDomainEvent(new PlayerWonDomainEvent()).build();
 
 		gameRepository.save(game);
 
